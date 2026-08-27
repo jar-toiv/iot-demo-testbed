@@ -5,7 +5,7 @@
 Kentälle on asennettu Testbed keskus, jonka tarkoituksena on kerätä data kenttäväylistä.
 Hyödynnän MQTT protokollaa tiedon keruussa ja typescriptiä niiden viennissä tietokantoihin
 
-Keskuksella on tarkoitus myöhmemin saada simuloitua kentällä tapahtuvia vikoja.
+Keskuksella on tarkoitus myöhemmin saada simuloitua kentällä tapahtuvia vikoja.
 
 ## Miksi tämä on olemassa
 
@@ -94,7 +94,7 @@ konteksti, vaihtoehdot, päätös, seuraukset, todennus.
 
 ## Tekijä
 
-Jarmo T  Sähköasennustausta, opettelee IoT/pilvipuolta tämän
+Jarmo T Sähköasennustausta, opettelee IoT/pilvipuolta tämän
 projektin kautta.
 
 ## Lisenssi

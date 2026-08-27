@@ -1,2 +1,16 @@
 /memos
 /instructions
+
+# Claude — personal configuration and notes, not project code.
+# Hidden from git, but still searchable: see .ignore
+.claude
+/CLAUDE.md
+/CLAUDE.local.md
+/claude_*.md
+/docs/claude/
+/docs/INDEX.md
+/.ignore
+
+# Node
+node_modules/
+dist/

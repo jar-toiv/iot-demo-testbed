@@ -1,0 +1,105 @@
+# Arkkitehtuuripäätökset (ADR)
+
+Tämä hakemisto sisältää projektin arkkitehtuuripäätökset. Jokainen tiedosto
+dokumentoi yhden päätöksen: mikä valittiin, mitä hylättiin ja **miksi**.
+
+## Miksi nämä ovat olemassa
+
+Datan siirtäminen mittarista tietokantaan on suoritustyötä. Sen perusteleminen,
+miksi juuri tämä laite, tämä protokolla ja tämä epäonnistumismalli valittiin, on
+suunnittelutyötä. Tämä hakemisto on se osa projektia, joka erottaa nämä kaksi.
+
+Kun joku kysyy "miksi Raspberry Pi eikä teollinen ohjain", vastaus ei saa olla
+"se oli minulla valmiina". Sen pitää olla ADR-0001.
+
+## Tila juuri nyt — lue tämä ennen kuin luotat mihinkään alla olevaan
+
+Nämä tiedostot kirjoitettiin yhtenä eränä ennen kuin projektissa oli riviäkään
+koodia tai laitetta penkillä. Se ei ole ADR-käytäntö. ADR kirjoitetaan sillä
+hetkellä kun päätös tehdään, yksi kerrallaan; erässä kirjoitettu ADR on
+suunnitteludokumentti ADR:n muodossa.
+
+Mitä se tarkoittaa lukijalle:
+
+- **`Tila`-kenttiin ei voi luottaa.** Ne asetettiin oletusarvoina, ei
+  päätöksinä. Ne korjataan sitä mukaa kun kukin ADR käydään läpi.
+- **`Liittyy`-kenttiin ei voi luottaa.** Viittaukset tehtiin nopeasti eikä
+  niitä ole tarkistettu. Vahvistamaton viittaus on huonompi kuin puuttuva.
+- **ADR ei kelpaa todisteeksi toista ADR:ää vastaan** ennen kuin molemmat on
+  käyty läpi. Fyysinen inventaario, `CLAUDE.md` ja mittaustulos kelpaavat.
+
+Sisältö on silti käyttökelpoista: tutkimustyö, hinnat ja vaihtoehtojen
+punninta ovat aitoja. Muoto ja tilamerkinnät ovat ne jotka eivät vielä pidä.
+
+Läpikäynti tehdään komennolla `/adr-review <numero>`, yksi ADR kerrallaan.
+
+## Säännöt
+
+1. **Yksi päätös per tiedosto.** Jos joudut kirjoittamaan "ja lisäksi",
+   se on toinen ADR.
+2. **Kirjoita hylätyt vaihtoehdot auki.** Päätös ilman hylättyjä vaihtoehtoja
+   ei ole päätös, se on toteamus.
+3. **Kirjoita seuraukset rehellisesti, myös huonot.** Jokaisella valinnalla on
+   hinta. Sen nimeäminen on uskottavuuden lähde, ei heikkous.
+4. **Älä muokkaa hyväksytyn ADR:n päätöstä tai seurauksia.** Jos päätös
+   muuttuu, kirjoita uusi ADR ja merkitse vanha `Korvattu (ks. ADR-XXXX)`.
+   Poikkeus: `Liittyy`-kenttää saa täydentää jälkikäteen (sääntö 6) — se ei
+   muuta päätöstä, vaan paljastaa yhteyden joka ei ollut tiedossa
+   kirjoitushetkellä.
+5. **Numerointi juoksee, ei täytetä aukkoja.**
+6. **`Liittyy` on vahvistettu, ei arvattu.** Viittaus lisätään vasta kun se on
+   luettu ja tarkistettu, ja se perustellaan ADR:n tekstissä eikä pelkkänä
+   otsikkorivinä. Tyhjä `—` on parempi kuin viittaus johon ei voi luottaa.
+
+## Tilat
+
+| Tila | Merkitys |
+|---|---|
+| `Ehdotettu` | Kirjattu, ei vielä päätetty |
+| `Hyväksytty` | Voimassa oleva päätös |
+| `Hylätty` | Harkittiin, ei toteutettu |
+| `Korvattu` | Uudempi ADR kumoaa tämän |
+| `Vanhentunut` | Ei enää relevantti (esim. laite poistui) |
+
+**Milloin `Hyväksytty` ansaitaan.** Tila on tarkistettava fakta, ei mielipide.
+`Hyväksytty` edellyttää vähintään yhtä näistä:
+
+- raha on käytetty tai laite on hyllyssä
+- päätöstä toteuttava koodi on olemassa
+- päätös on todennettu mittauksella, ja `Todennus` kertoo miten se mitattiin
+
+Muutoin `Ehdotettu`. Tämä koskee myös ADR:ää joka tuntuu itsestäänselvältä:
+hyvä perustelu ei ole sama asia kuin todennus.
+
+Kriteeri koskee sitä päätöstä jonka ADR tekee, ei mitä tahansa faktaa sen
+sisällä. Laite hyllyssä oikeuttaa hankintapäätöksen; se ei oikeuta päätöstä
+siitä miten laitetta käytetään. Sellainen ansaitaan mittauksella.
+
+## Hakemisto
+
+| # | Otsikko | Tila |
+|---|---|---|
+| [0001](0001-reunalaite-raspberry-pi.md) | Reunalaitteeksi Raspberry Pi 4B, ei teollista ohjainta | Hyväksytty |
+| [0002](0002-kaksi-valmistajaa.md) | Kaksi eri valmistajaa yhden sijaan | Ehdotettu |
+| [0003](0003-omat-parserit.md) | Omat protokollaparserit, ei valmista yhdyskäytävää | Ehdotettu |
+| [0004](0004-reading-envelope-quality.md) | Normalisoitu mittausenvelooppi ja laatukenttä | Ehdotettu |
+| [0005](0005-fyysinen-vikaruiskutus.md) | Fyysinen vikaruiskutuspaneeli | Ehdotettu |
+| [0006](0006-verkkovikojen-simulointi.md) | Verkkovikojen simulointi netemillä + ristiintestaus oikeaa linkkiä vasten | Ehdotettu |
+| [0007](0007-ei-erillista-4g-reititinta.md) | Ei erillistä 4G-reititintä ensimmäisessä vaiheessa | Ehdotettu |
+| [0008](0008-toistotila.md) | Toistotila demon riippumattomuuden takaamiseksi | Ehdotettu |
+| [0009](0009-kotelo-ja-sahkonsyotto.md) | Ryhmäkeskus koteloksi, ei pistokemuuntajia sisällä | Ehdotettu |
+| [0010](0010-waveshare-modbus-tcp.md) | Waveshare-sarjapalvelin Modbus TCP -tasoksi | Ehdotettu |
+| [0011](0011-cn105-takaisinmallinnettu.md) | CN105 takaisinmallinnettuna protokollana standardin vastaparina | Ehdotettu |
+| [0012](0012-wm-bus-rajaus.md) | wM-Bus-vastaanoton eettinen ja oikeudellinen rajaus | Ehdotettu |
+| [0013](0013-lora-point-to-point.md) | LoRa point-to-point, ei LoRaWAN-gatewaytä | Ehdotettu |
+| [0014](0014-mqtt-nimiavaruus.md) | MQTT-nimiavaruus ja Sparkplug B | Ehdotettu |
+| [0015](0015-kamstrup-kwm2230.md) | Kamstrup KWM2230 rajattu pois wM-Bus-lähteenä | Ehdotettu |
+| [0016](0016-hiljainen-yhteyden-kuolema.md) | Hiljainen yhteyden kuolema ensiluokkaisena havaittavana vikana | Ehdotettu |
+| [0017](0017-elpymisportaikko.md) | Portaittainen elpyminen mobiiliyhteyden viasta | Ehdotettu |
+| [0018](0018-uloslahteva-komentokanava.md) | Uloslähtevä MQTT-komentokanava, ei sisääntulevaa yhteyttä | Ehdotettu |
+| [0019](0019-pi-tarjoaa-etakohteelle-oman-wifi-tukiaseman-kohteen-infraa-ei-oleteta.md) | Pi tarjoaa etäkohteelle oman WiFi-tukiaseman, kohteen infraa ei oleteta | Hyväksytty |
+
+## Liittyvät dokumentit
+
+- [`../vikaluettelo.md`](../vikaluettelo.md) — havaittujen ja ruiskutettujen vikojen rekisteri
+- [`0000-template.md`](0000-template.md) — pohja uudelle ADR:lle

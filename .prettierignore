@@ -1,0 +1,17 @@
+# Prettier's scope in this project: TypeScript and JSON.
+#
+# Markdown is excluded on purpose. proseWrap defaults to "preserve", so
+# prose would survive, but tables get re-aligned and list markers
+# normalised — and the ADR tables and CLAUDE.md's line budget are
+# hand-tuned. Revisit only as a deliberate one-off reformat.
+#
+# Shell scripts are not a Prettier language at all; .claude/scripts/ is
+# untouched either way.
+
+node_modules/
+dist/
+
+# npm owns this file's formatting.
+package-lock.json
+
+*.md

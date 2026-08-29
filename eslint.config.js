@@ -1,12 +1,12 @@
-import js from "@eslint/js";
-import { defineConfig } from "eslint/config";
-import tseslint from "typescript-eslint";
-import eslintConfigPrettier from "eslint-config-prettier/flat";
+import js from '@eslint/js'
+import { defineConfig } from 'eslint/config'
+import tseslint from 'typescript-eslint'
+import eslintConfigPrettier from 'eslint-config-prettier/flat'
 
 export default defineConfig([
-  { ignores: ["dist/**"] },
+  { ignores: ['dist/**'] },
   {
-    files: ["**/*.ts"],
+    files: ['**/*.ts'],
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
@@ -17,8 +17,8 @@ export default defineConfig([
     },
   },
   {
-    files: ["**/*.js"],
+    files: ['**/*.js'],
     extends: [js.configs.recommended],
   },
   eslintConfigPrettier,
-]);
+])

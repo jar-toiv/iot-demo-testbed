@@ -4,4 +4,4 @@
 // something real to act on. Replace it when the pipeline implementation
 // starts (see docs/design/ and the ADRs).
 
-export const SCAFFOLD_READY = true;
+export const SCAFFOLD_READY = true

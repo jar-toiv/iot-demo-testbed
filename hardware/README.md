@@ -16,8 +16,8 @@ later is unexplainable.
 Documentation research and reading the physical unit are not the same thing.
 Every value carries one of:
 
-- **[MODEL]** — documented for this exact model, with a source
-- **[DEVICE]** — establishable only by reading the unit in front of you
+- **[MODEL]**  documented for this exact model, with a source
+- **[DEVICE]**  establishable only by reading the unit in front of you
 
 ## Layout
 
@@ -34,4 +34,4 @@ hardware/
 | Device | Slug | Related |
 |---|---|---|
 | Waveshare RS232/485/422 TO POE ETH (B), SKU 23626 | [waveshare-23626](waveshare-23626/device.md) | ADR-0010 |
-| Carlo Gavazzi EM111-DIN.AV8.1.XS1.X | not created yet | ADR-0002 |
+| Carlo Gavazzi EM111-DIN.AV8.1.X.S1.X | [CG EM111-S1](carlo-gavazzi-em111/device.md) | ADR-0002 |

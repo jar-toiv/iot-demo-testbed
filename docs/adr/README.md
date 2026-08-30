@@ -14,10 +14,8 @@ Kun joku kysyy "miksi Raspberry Pi eikä teollinen ohjain", vastaus ei saa olla
 
 ## Tila juuri nyt — lue tämä ennen kuin luotat mihinkään alla olevaan
 
-Nämä tiedostot kirjoitettiin yhtenä eränä ennen kuin projektissa oli riviäkään
-koodia tai laitetta penkillä. Se ei ole ADR-käytäntö. ADR kirjoitetaan sillä
-hetkellä kun päätös tehdään, yksi kerrallaan; erässä kirjoitettu ADR on
-suunnitteludokumentti ADR:n muodossa.
+Harjoittelen dokumentointia ja tästä syystä nämä ADR:t voivat olla sekavia
+tai sisältää väärää tietoa.
 
 Mitä se tarkoittaa lukijalle:
 
@@ -26,12 +24,10 @@ Mitä se tarkoittaa lukijalle:
 - **`Liittyy`-kenttiin ei voi luottaa.** Viittaukset tehtiin nopeasti eikä
   niitä ole tarkistettu. Vahvistamaton viittaus on huonompi kuin puuttuva.
 - **ADR ei kelpaa todisteeksi toista ADR:ää vastaan** ennen kuin molemmat on
-  käyty läpi. Fyysinen inventaario, `CLAUDE.md` ja mittaustulos kelpaavat.
+  käyty läpi.
 
 Sisältö on silti käyttökelpoista: tutkimustyö, hinnat ja vaihtoehtojen
 punninta ovat aitoja. Muoto ja tilamerkinnät ovat ne jotka eivät vielä pidä.
-
-Läpikäynti tehdään komennolla `/adr-review <numero>`, yksi ADR kerrallaan.
 
 ## Säännöt
 
@@ -80,7 +76,7 @@ siitä miten laitetta käytetään. Sellainen ansaitaan mittauksella.
 | # | Otsikko | Tila |
 |---|---|---|
 | [0001](0001-reunalaite-raspberry-pi.md) | Reunalaitteeksi Raspberry Pi 4B, ei teollista ohjainta | Hyväksytty |
-| [0002](0002-kaksi-valmistajaa.md) | Kaksi eri valmistajaa yhden sijaan | Ehdotettu |
+| [0002](0002-Modbus-RTU-ja-M-bus-orja.md) | Kaksi eri valmistajaa yhden sijaan | Hyväksytty |
 | [0003](0003-omat-parserit.md) | Omat protokollaparserit, ei valmista yhdyskäytävää | Ehdotettu |
 | [0004](0004-reading-envelope-quality.md) | Normalisoitu mittausenvelooppi ja laatukenttä | Ehdotettu |
 | [0005](0005-fyysinen-vikaruiskutus.md) | Fyysinen vikaruiskutuspaneeli | Ehdotettu |
@@ -88,7 +84,7 @@ siitä miten laitetta käytetään. Sellainen ansaitaan mittauksella.
 | [0007](0007-ei-erillista-4g-reititinta.md) | Ei erillistä 4G-reititintä ensimmäisessä vaiheessa | Ehdotettu |
 | [0008](0008-toistotila.md) | Toistotila demon riippumattomuuden takaamiseksi | Ehdotettu |
 | [0009](0009-kotelo-ja-sahkonsyotto.md) | Ryhmäkeskus koteloksi, ei pistokemuuntajia sisällä | Ehdotettu |
-| [0010](0010-waveshare-modbus-tcp.md) | Waveshare-sarjapalvelin Modbus TCP -tasoksi | Ehdotettu |
+| [0010](0010-waveshare-modbus-tcp.md) | Waveshare-sarjapalvelin Modbus TCP -tasoksi | Hyväksytty |
 | [0011](0011-cn105-takaisinmallinnettu.md) | CN105 takaisinmallinnettuna protokollana standardin vastaparina | Ehdotettu |
 | [0012](0012-wm-bus-rajaus.md) | wM-Bus-vastaanoton eettinen ja oikeudellinen rajaus | Ehdotettu |
 | [0013](0013-lora-point-to-point.md) | LoRa point-to-point, ei LoRaWAN-gatewaytä | Ehdotettu |

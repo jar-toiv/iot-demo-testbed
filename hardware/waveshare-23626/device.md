@@ -18,8 +18,8 @@ that is noted inline and marked **[DEVICE]** as an unverified hypothesis.
 
 | Field | Value | Source |
 |---|---|---|
-| Serial number | | **[DEVICE]** type plate |
-| Firmware version | | **[DEVICE]** Vircom or web UI |
+| Serial number | `286DFC272A4C` | **[DEVICE]** Vircom or web UI |
+| Firmware version | `V.1.452` | **[DEVICE]** Vircom or web UI |
 | Hardware revision | | **[DEVICE]** type plate |
 
 ## Electrical
@@ -42,9 +42,6 @@ that is noted inline and marked **[DEVICE]** as an unverified hypothesis.
 | `TB` | RS422 RX+ |
 | `GND` | Signal ground |
 | `VCC` | Power input |
-
-`PROJEKTIN-TILA.md` specifies the bench wiring as A→A, B→B with G left open
-and no termination resistors. On this device that is **`RA`→A, `RB`→B**.
 
 ## Factory defaults
 
@@ -70,14 +67,7 @@ mode answers from cache after the bus has already died, exactly the
 silent-failure mode is active.** Confirm on the unit before trusting any
 reading.
 
-**The baud rate is now established.** `PROJEKTIN-TILA.md` stated "Wavesharen
-oletus 57600" with no source, and no documentation found supported that
-figure. This unit's actual factory-shipped baud rate was read directly,
-before any setting was changed: 9600 bps, matching the meter's own default.
-`PROJEKTIN-TILA.md` should be corrected.
-
 ## As-found
-
 
 | Field | As-found value | Verified how | Date |
 |---|---|---|---|

@@ -14,3 +14,11 @@
 # Node
 node_modules/
 dist/
+
+#Hardware official documentation
+/hardware/carlo-gavazzi-em111/EM110-111-112DIN_CE.pdf
+/hardware/carlo-gavazzi-em111/EM111_DS_ENG.pdf
+/hardware/carlo-gavazzi-em111/EM111_IM.pdf
+/hardware/carlo-gavazzi-em111/EM111_EM112_ET112_CP.pdf
+/hardware/carlo-gavazzi-em111/EM111_PIC.png
+

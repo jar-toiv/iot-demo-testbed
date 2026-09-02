@@ -4,12 +4,12 @@
 
 * Goal is to learn use of child_process so we can poll the EM111 with mbpoll and learn about registers usage and values.
 
-### Thoughts 
-
-- Use child_process with mbpoll to poll ME111, `figure out the payload for the meter`.
-- Meaby we need loop to read all registers into an object with K / V pair.
-- Do I need fs or something to write register values into JSON ?
-- Start with poll test to see what we get and how to strip it
+>### Thoughts 
+>
+>- Use child_process with mbpoll to poll ME111, `figure out the payload for the meter`.
+>- Meaby we need loop to read all registers into an object with K / V pair.
+>- Do I need fs or something to write register values into JSON ?
+>- Start with poll test to see what we get and how to strip it
 
 `mbpoll 192.168.50.46 -a 1 -r 1 -c 2 -p 502 -t 4 -x -1`
 ` poll | ip | address | rekisteri (korjattu +1) | c= 2 rekisteriä INT32 | portti | formaatti 04 | hexat | pollaa kerran |`
@@ -53,8 +53,8 @@ The stdout and stderr arguments passed to the callback will contain the stdout a
 
 # Pseudo
 
+```
 IMPORT NODE.js PROCESS
-
 Import child_process.execFile()
 import fs ( file stream varmaan jsonin kanssa en ole varma älä vielä noteeraa kun ei ole palautuva data edes hanskattu)
 
@@ -76,11 +76,4 @@ const registers = {
         //Tänne key value errorit kun saadaan
     }
 }
- 
-TX 2
-
-RX 3
-
-HANDLE 4
-
-JSON 5
+ ```

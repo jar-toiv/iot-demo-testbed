@@ -26,7 +26,8 @@ const registerVoltage = {
   dataFormat: 'int32',
   weight: '10',
   success: {
-    raw: [],
+    rawDec: [],
+    value: Number(),
   },
   error: {
     raw: '',
@@ -41,11 +42,20 @@ const pollData = async () => {
   const regexp = /\[0x(\w+)\]:\s*(-?\d+)/g
   let matches = [...stdout.matchAll(regexp)]
   for (const match of matches) {
-    Object.entries(registerVoltage.success.raw.push(match[2]))
+    Object.entries(registerVoltage.success.rawDec.push(match[2]))
   }
-  handleInt32(registerVoltage)
+
+  decodeInt32(registerVoltage)
 }
-const handleInt32 = (data) => {
-  console.log(data.success.raw)
+
+const decodeInt32 = (register) => {
+  const [firstInt16, secondInt16] = register.success.rawDec.map(Number)
+  const value = firstInt16 + secondInt16 * 65536
+  const valueDec = value >= 2147483648 ? value - 4294967296 : value
+  const voltage = valueDec / register.weight
+
+  register.success.value = voltage
+  console.log(register)
 }
+
 pollData()

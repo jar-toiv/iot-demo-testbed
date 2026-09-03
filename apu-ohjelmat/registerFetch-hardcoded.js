@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { promisify } from 'node:util'
 import { execFile } from 'node:child_process'
+import fs from 'node:fs/promises'
 
 const pollString = [
   '192.168.50.46',
@@ -23,11 +24,11 @@ const registerVoltage = {
   variable: 'V L-N',
   physicalAddress: '0x0000',
   pollAddress: '1',
-  dataFormat: 'int32',
-  weight: '10',
+  type: 'int32',
+  weight: 10,
   success: {
     rawDec: [],
-    value: Number(),
+    value: 0,
   },
   error: {
     raw: '',
@@ -37,15 +38,18 @@ const registerVoltage = {
 const execFilePromise = promisify(execFile)
 
 const pollData = async () => {
-  const { stdout, stderr } = await execFilePromise('mbpoll', pollString)
+  try {
+    const { stdout, stderr } = await execFilePromise('mbpoll', pollString)
 
-  const regexp = /\[0x(\w+)\]:\s*(-?\d+)/g
-  let matches = [...stdout.matchAll(regexp)]
-  for (const match of matches) {
-    Object.entries(registerVoltage.success.rawDec.push(match[2]))
+    const regexp = /\[0x(\w+)\]:\s*(-?\d+)/g
+    let matches = [...stdout.matchAll(regexp)]
+    for (const match of matches) {
+      registerVoltage.success.rawDec.push(match[2])
+    }
+    decodeInt32(registerVoltage)
+  } catch (err) {
+    console.log('Error polling the meter', stderr)
   }
-
-  decodeInt32(registerVoltage)
 }
 
 const decodeInt32 = (register) => {
@@ -56,6 +60,19 @@ const decodeInt32 = (register) => {
 
   register.success.value = voltage
   console.log(register)
+  saveAsJSON(register)
+}
+
+const saveAsJSON = async (register) => {
+  const json = JSON.stringify(register, null, 2)
+
+  try {
+    await fs.writeFile('voltageRegisterJson.json', json)
+
+    console.log('The file has been saved!')
+  } catch (err) {
+    console.error('Writing a file failed.', err)
+  }
 }
 
 pollData()
